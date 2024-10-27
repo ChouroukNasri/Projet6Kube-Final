@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  auth-api:
+    build: ./auth-api
+    ports:
+      - "8081:8081"
+    depends_on:
+      - users-api
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:8080"
+
+  log-message-processor:
+    build: ./log-message-processor
+    ports:
+      - "8084:8084"
+
+  todos-api:
+    build: ./todos-api
+    ports:
+      - "8082:8082"
+
+  users-api:
+    build: ./users-api
+    ports:
+      - "8083:8083"

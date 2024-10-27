@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-message-processor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-message-processor
+  template:
+    metadata:
+      labels:
+        app: log-message-processor
+    spec:
+      containers:
+      - name: log-message-processor
+        image: chourouknasri/k8sprojet_log-message-processor
+        env:
+        - name: REDIS_HOST
+          value: "redis"  # Remplacez "redis" par le nom correct du service si nécessaire
+        # Ajoutez d'autres variables d'environnement si nécessaire
+
